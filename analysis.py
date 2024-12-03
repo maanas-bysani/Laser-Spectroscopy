@@ -70,13 +70,16 @@ def analysis():
     plt.show()
 
 
-    # normalise each dataset
-    # peak_1_n_data = pd.DataFrame(peak_1_data.iloc[:,0])
-    # peak_2_n_data = pd.DataFrame(peak_2_data.iloc[:,0])
-    # peak_3_n_data = pd.DataFrame(peak_3_data.iloc[:,0])
-    # peak_4_n_data = pd.DataFrame(peak_4_data.iloc[:,0])
-    # datasets = [peak_1_data, peak_2_data, peak_3_data, peak_4_data]
-    # datasets_normalised = [peak_1_n_data, peak_2_n_data, peak_3_n_data, peak_4_n_data]
+    ## normalisation    
+    peak_1_n_data = pd.DataFrame(peak_1_data.iloc[:, 0])
+    peak_2_n_data = pd.DataFrame(peak_2_data.iloc[:, 0])
+    peak_3_n_data = pd.DataFrame(peak_3_data.iloc[:, 0])
+    peak_4_n_data = pd.DataFrame(peak_4_data.iloc[:, 0])
+
+    datasets = [peak_1_data, peak_2_data, peak_3_data, peak_4_data]
+    datasets_normalised = [peak_1_n_data, peak_2_n_data, peak_3_n_data, peak_4_n_data]
+
+    ## min max normalisation
     # for df, df_normalised in zip(datasets, datasets_normalised):
     #     df_normalised['ch1_n'] = (df.iloc[:,1] - df.iloc[:,1].min()) / (df.iloc[:,1].max() - df.iloc[:,1].min())
     #     df_normalised['ch2_n'] = (df.iloc[:,2] - df.iloc[:,2].min()) / (df.iloc[:,2].max() - df.iloc[:,2].min())
@@ -84,33 +87,15 @@ def analysis():
     #     df_normalised['ttl_n'] = (df.iloc[:,-1] - df.iloc[:,-1].min()) / (df.iloc[:,-1].max() - df.iloc[:,-1].min())
 
 
-    # Create the DataFrames for the first columns (if not already created)
-    peak_1_n_data = pd.DataFrame(peak_1_data.iloc[:, 0])
-    peak_2_n_data = pd.DataFrame(peak_2_data.iloc[:, 0])
-    peak_3_n_data = pd.DataFrame(peak_3_data.iloc[:, 0])
-    peak_4_n_data = pd.DataFrame(peak_4_data.iloc[:, 0])
-
-    # Create lists for datasets and their normalized versions
-    datasets = [peak_1_data, peak_2_data, peak_3_data, peak_4_data]
-    datasets_normalised = [peak_1_n_data, peak_2_n_data, peak_3_n_data, peak_4_n_data]
-
-    # Find the minimum value of both datasets for each channel and match them
     for df, df_normalised in zip(datasets, datasets_normalised):
-        # Calculate the shift needed to match the minimum values of both datasets
-        min_peak_1 = df.iloc[:, 1].min()  # Minimum of the first dataset
-        min_peak_2 = df.iloc[:, 2].min()  # Minimum of the second dataset (modify as needed for each dataset)
+        min_peak_1 = df.iloc[:, 1].min()
+        min_peak_2 = df.iloc[:, 2].min()
 
-        ratio = min_peak_2 / min_peak_1  # Calculate the ratio of the minima
+        ratio = min_peak_2 / min_peak_1
 
-        # Multiply the second dataset by the ratio to match the minima
         df_normalised['ch1_n'] = df.iloc[:, 1] * ratio
         df_normalised['ch2_n'] = df.iloc[:, 2]
-        # df_normalised['ch3_n'] = df.iloc[:, 3] * ratio
-        # df_normalised['ttl_n'] = df.iloc[:, -1] * ratio
-
-
-    # Now, datasets_normalised contains the normalized data with aligned minimums
-
+        
     print(peak_1_n_data.columns)
     peak_1_data_shift = 0.0002
     peak_2_data_shift = 0.0001
