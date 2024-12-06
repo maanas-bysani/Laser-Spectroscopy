@@ -27,7 +27,8 @@ def std_dev_to_fwhm(std_devs):
     fwhms = conversion_factor * np.array(std_devs)
     return fwhms
 
-def analysis(hfs_file, fs_file, fp_file, peak_height_guess, peak_separation_guess, window_size_input, all_plots = False):
+def analysis(hfs_file, fs_file, fp_file, peak_height_guess, peak_separation_guess, window_size_input, \
+             all_plots = False, subtracted_manual = False, subtracted_automatic = True, fabry_perot = True):
     hfs_data = pd.read_csv(hfs_file)
     fs_data = pd.read_csv(fs_file)
     fp_data = pd.read_csv(fp_file)
@@ -105,133 +106,255 @@ def analysis(hfs_file, fs_file, fp_file, peak_height_guess, peak_separation_gues
     plt.legend()
     plt.show()
 
+
+
+    # curve fitting manual
+
+    if subtracted_manual is True:
+        # # amp, mu, sigma, c
+        initial_guess = [0.01, 0.00078, 0.00005, -0.01] # fits
+        initial_guess = [0.03, 0.0012, 0.00005, 0.0] # fits
+        initial_guess = [0.02, 0.00165, 0.000025, 0.0] # fits with window size 1.4
+        initial_guess = [0.15, 0.00195, 0.00005, 0.05] # fits
+        initial_guess = [0.275, 0.00237, 0.00004, 0.05] # fits
+        initial_guess = [0.01, 0.00313, 0.00004, 0.0] # fits
+        initial_guess = [0.001, 0.0082, 0.00001, 0.05] # no work
+        initial_guess = [0.03, 0.00834, 0.00002, 0.11] # fits with window 2
+        initial_guess = [0.25, 0.008655, 0.00001, 0.37] # fits
+        initial_guess = [0.32, 0.00882, 0.000024, 0.37] # fits with window 1.6
+        initial_guess = [0.09, 0.00913, 0.00002, 0.05] # fits
+        initial_guess = [0.3, 0.02194, 0.00013, 0.05] # fits
+        initial_guess = [-0.022, 0.0320, 0.000036, -0.0006] # fits
+        initial_guess = [0.02, 0.0322, 0.000006, 0.02] # fits with window 1.5
+        initial_guess = [0.05, 0.03254, 0.00005, 0.04] # fits
+        initial_guess = [0.026, 0.03285, 0.00005, 0.03] # fits
+
+        mu_guess = initial_guess[1]
+        sigma_guess = initial_guess[2]
+        window_factor = 3  # number of sigma to include in the window
+
+        time_min = mu_guess - window_factor * sigma_guess
+        time_max = mu_guess + window_factor * sigma_guess
+
+        window = (time >= time_min) & (time <= time_max)
+        time_window = time[window]
+        spectrum_window = subtracted_spectrum[window]
+
+        popt, cov = curve_fit(gaussian, time_window, spectrum_window, p0=initial_guess, maxfev=1000000)
+        fitted_curve_window = gaussian(time_window, *popt)
+        fitted_curve_extended = gaussian(time, *popt)
+
+        plt.plot(time, subtracted_spectrum, label = "Data", lw = 0.75)
+
+
+        # plt.plot(time_window, spectrum_window, 'o', color='red', label="Fit Window Data", markersize=2)
+        plt.plot(time, gaussian(time, *initial_guess), color='green', linestyle='--', label='Guess')
+        plt.plot(time_window, fitted_curve_window, color='black', label='Gaussian Fit - Window')
+        plt.plot(time, fitted_curve_extended, color='orange', ls = 'dashed', alpha = 0.7, label='Gaussian Fit - Extended')
+
+        plt.title("Subtracted Spectrum")
+        plt.xlabel('Time (s)')
+        plt.ylabel('Voltage (V)')
+        plt.legend()
+        plt.show()
+
+
+
+    # curve fitting automatic
+
+    if subtracted_automatic is True:
+
+        initial_guesses = [
+            [0.01, 0.00078, 0.00005, -0.01, 3],  # Default window = 3
+            [0.03, 0.0012, 0.00005, 0.0, 3],     # Default window = 3
+            [0.02, 0.00165, 0.000025, 0.0, 1.4], # Window = 1.4
+            [0.15, 0.00195, 0.00005, 0.05, 3],   # Default window = 3
+            [0.275, 0.00237, 0.00004, 0.05, 3],  # Default window = 3
+            [0.01, 0.00313, 0.00004, 0.0, 3],    # Default window = 3
+            [0.03, 0.00834, 0.00002, 0.11, 2],   # Window = 2
+            [0.25, 0.008655, 0.00001, 0.37, 3],  # Default window = 3
+            [0.32, 0.00882, 0.000024, 0.37, 1.6],# Window = 1.6
+            [0.09, 0.00913, 0.00002, 0.05, 3],   # Default window = 3
+            [0.3, 0.02194, 0.00013, 0.05, 3],    # Default window = 3
+            [-0.022, 0.0320, 0.000036, -0.0006, 3], # Default window = 3
+            [0.02, 0.0322, 0.000006, 0.02, 1.5], # Window = 1.5
+            [0.05, 0.03254, 0.00005, 0.04, 3],   # Default window = 3
+            [0.026, 0.03285, 0.00005, 0.03, 3]   # Default window = 3
+        ]
+
+
+        amplitudes_list = []
+        means_list = []
+        sigmas_list = []
+        offsets_list = []
+        fitted_curves_list = []
+        window_times_list = []
+
+
+        for initial_guess in initial_guesses:
+            p0 = initial_guess[0:4]
+            mu_guess = p0[1]
+            sigma_guess = p0[2]
+            window_factor = initial_guess[4]
+
+            time_min = mu_guess - window_factor * sigma_guess
+            time_max = mu_guess + window_factor * sigma_guess
+
+            window = (time >= time_min) & (time <= time_max)
+            time_window = time[window]
+            spectrum_window = subtracted_spectrum[window]
+
+            popt, cov = curve_fit(gaussian, time_window, spectrum_window, p0=p0, maxfev=1000000)
+
+            amp, mu, sigma, c = popt
+            amplitudes_list.append(amp)
+            means_list.append(mu)
+            sigmas_list.append(sigma)
+            offsets_list.append(c)
+            window_times_list.append(time_window)
+
+            fitted_curves_list.append(gaussian(time_window, *popt))
+
+
+        plt.plot(time, subtracted_spectrum, label='Data', alpha=0.7, lw = 0.75)
+
+        for i, (fitted_time, fitted_curve) in enumerate(zip(window_times_list, fitted_curves_list), start=1):
+            plt.plot(fitted_time, fitted_curve, label = f'G {i}')
+
+        plt.title("Subtracted Spectrum with Gaussian Fits")
+        plt.xlabel('Time (s)')
+        plt.ylabel('Voltage (V)')
+        plt.legend()
+        plt.show()
+
+
     # fabry perot 
 
+    if fabry_perot is True:
 
+        peaks, properties = find_peaks(fp_channel, height = peak_height_guess, distance = peak_separation_guess)  # distance is index number (not x axis value)
+        peaks_indices = peaks
+        peaks_heights = properties['peak_heights']
 
-    peaks, properties = find_peaks(fp_channel, height = peak_height_guess, distance = peak_separation_guess)  # distance is index number (not x axis value)
-    peaks_indices = peaks
-    peaks_heights = properties['peak_heights']
+        if all_plots is True:
+            plt.plot(fp_channel, label='Fabry Perot Signal')
+            plt.scatter(peaks_indices, peaks_heights, color='red', label='Maxima Peaks', zorder=5, marker = 'x')
+            plt.title('Fabry Perot Peaks')
+            plt.xlabel('Index')
+            plt.ylabel('Voltage (V)')
+            plt.legend()
+            plt.show()
 
-    if all_plots is True:
-        plt.plot(fp_channel, label='Fabry Perot Signal')
-        plt.scatter(peaks_indices, peaks_heights, color='red', label='Maxima Peaks', zorder=5, marker = 'x')
-        plt.title('Fabry Perot Peaks')
-        plt.xlabel('Index')
-        plt.ylabel('Voltage (V)')
-        plt.legend()
-        plt.show()
-
-    if all_plots is True:
-        plt.plot(fp_channel, label='Fabry Perot Signal')
-        plt.scatter(peaks_indices, peaks_heights, color='red', label='Maxima Peaks', zorder=5, marker = 'x')
-        plt.xticks(peaks_indices, range(1, len(peaks_indices) + 1))
-        plt.title('Fabry Perot Peaks')
-        plt.xlabel('Peak Index')
-        plt.ylabel('Voltage (V)')
-        plt.legend()
-        plt.show()
-
-    # amp, mean, width, offset
-    amp_list = []
-    mean_list = []
-    width_list = []
-    offset_list = []
-
-    fig, ax1 = plt.subplots()
-    ax2 = ax1.twiny()
-    
-    for idx, peak_idx in enumerate(peaks_indices):
-        window_size = window_size_input
-        start = max(peak_idx - window_size, 0)
-        end = min(peak_idx + window_size, len(fp_channel))
-        region_x = np.arange(start, end)
-        region_y = fp_channel[start:end]
+        if all_plots is True:
+            plt.plot(fp_channel, label='Fabry Perot Signal')
+            plt.scatter(peaks_indices, peaks_heights, color='red', label='Maxima Peaks', zorder=5, marker = 'x')
+            plt.xticks(peaks_indices, range(1, len(peaks_indices) + 1))
+            plt.title('Fabry Perot Peaks')
+            plt.xlabel('Peak Index')
+            plt.ylabel('Voltage (V)')
+            plt.legend()
+            plt.show()
 
         # amp, mean, width, offset
-        initial_guess = [peaks_heights[peaks_indices.tolist().index(peak_idx)], peak_idx, 5, np.min(region_y)]
+        amp_list = []
+        mean_list = []
+        width_list = []
+        offset_list = []
 
-        popt, cov = curve_fit(lorentzian_with_offset, region_x, region_y, p0=initial_guess)
-        fitted_curve = lorentzian_with_offset(region_x, *popt)
+        fig, ax1 = plt.subplots()
+        ax2 = ax1.twiny()
+        
+        for idx, peak_idx in enumerate(peaks_indices):
+            window_size = window_size_input
+            start = max(peak_idx - window_size, 0)
+            end = min(peak_idx + window_size, len(fp_channel))
+            region_x = np.arange(start, end)
+            region_y = fp_channel[start:end]
 
-        amp_list.append(popt[0])
-        mean_list.append(popt[1])
-        width_list.append(popt[2])
-        offset_list.append(popt[3])
+            # amp, mean, width, offset
+            initial_guess = [peaks_heights[peaks_indices.tolist().index(peak_idx)], peak_idx, 5, np.min(region_y)]
 
-        if idx == 0:
-            ax2.plot(region_x, fitted_curve, color='green', linestyle='--', label='Lorentzian Fit')
-            # plt.plot(region_x, fitted_curve, color='green', linestyle='--')
-        else:
-            ax2.plot(region_x, fitted_curve, color='green', linestyle='--')
-            # plt.plot(region_x, fitted_curve, color='green', linestyle='--')
+            popt, cov = curve_fit(lorentzian_with_offset, region_x, region_y, p0=initial_guess)
+            fitted_curve = lorentzian_with_offset(region_x, *popt)
 
-    # plt.plot(time_fp, fp_channel, label='Signal', alpha = 0.4, lw = 0.7)
-    # plt.scatter(peaks_indices, peaks_heights, color='red', label='Maxima Peaks', zorder=5, marker='x')
-    # plt.title('Signal with Lorentzian Fits')
-    # plt.xlabel('Peak Index')
-    # plt.ylabel('Voltage (V)')
-    # plt.xticks(peaks_indices, range(1, len(peaks_indices) + 1))
-    # plt.legend()
-    # plt.show()
+            amp_list.append(popt[0])
+            mean_list.append(popt[1])
+            width_list.append(popt[2])
+            offset_list.append(popt[3])
 
-    ax1.plot(time_fp*1000, fp_channel, label='Signal', alpha = 0.4, lw = 0.7)
-    ax1.set_xlabel('Time (ms)')
-    ax1.set_ylabel('Voltage (V)')
+            if idx == 0:
+                ax2.plot(region_x, fitted_curve, color='green', linestyle='--', label='Lorentzian Fit')
+                # plt.plot(region_x, fitted_curve, color='green', linestyle='--')
+            else:
+                ax2.plot(region_x, fitted_curve, color='green', linestyle='--')
+                # plt.plot(region_x, fitted_curve, color='green', linestyle='--')
 
-    ax2.scatter(peaks_indices, peaks_heights, color='red', label='Lorentzian Peaks', zorder=5, marker='x', s = 20, linewidths=0.5)
-    ax2.set_xlabel('Peak Index')
-    ax2.set_xticks(peaks_indices, range(1, len(peaks_indices) + 1))    
+        # plt.plot(time_fp, fp_channel, label='Signal', alpha = 0.4, lw = 0.7)
+        # plt.scatter(peaks_indices, peaks_heights, color='red', label='Maxima Peaks', zorder=5, marker='x')
+        # plt.title('Signal with Lorentzian Fits')
+        # plt.xlabel('Peak Index')
+        # plt.ylabel('Voltage (V)')
+        # plt.xticks(peaks_indices, range(1, len(peaks_indices) + 1))
+        # plt.legend()
+        # plt.show()
 
-    plt.title('Signal with Lorentzian Fits')
-    handles, labels = ax1.get_legend_handles_labels()
-    handles2, labels2 = ax2.get_legend_handles_labels()
-    handles.extend(handles2)
-    labels.extend(labels2)
-    plt.legend(handles=handles, labels=labels, loc='best')
-    plt.show()
+        ax1.plot(time_fp*1000, fp_channel, label='Signal', alpha = 0.4, lw = 0.7)
+        ax1.set_xlabel('Time (ms)')
+        ax1.set_ylabel('Voltage (V)')
+
+        ax2.scatter(peaks_indices, peaks_heights, color='red', label='Lorentzian Peaks', zorder=5, marker='x', s = 20, linewidths=0.5)
+        ax2.set_xlabel('Peak Index')
+        ax2.set_xticks(peaks_indices, range(1, len(peaks_indices) + 1))    
+
+        plt.title('Signal with Lorentzian Fits')
+        handles, labels = ax1.get_legend_handles_labels()
+        handles2, labels2 = ax2.get_legend_handles_labels()
+        handles.extend(handles2)
+        labels.extend(labels2)
+        plt.legend(handles=handles, labels=labels, loc='best')
+        plt.show()
 
 
 
-    if all_plots is True:
+        if all_plots is True:
+            mean_array = np.array(mean_list) # in index numbers
+            mean_diffs = np.diff(mean_array, axis=0)
+            plt.scatter(np.arange(0, len(peaks_indices) - 1, 1), mean_diffs, marker = 'x')
+            plt.xlabel('Peak Index')
+            plt.ylabel('Difference in Mean of Lorentzian Fit (index number)')
+            plt.title('Index Number Difference vs Peak Number')
+            plt.show()
+
+            mean_array = np.array(mean_list, dtype = int)
+            mean_times = time_fp[mean_array]
+            mean_diffs = np.diff(mean_times, axis=0)
+            plt.scatter(np.arange(0, len(peaks_indices) - 1, 1), mean_diffs, marker = 'x')
+            plt.xlabel('Peak Index')
+            plt.ylabel('Difference in Mean of Lorentzian Fit (time)')
+            plt.title('Time Scale Difference vs Peak Number')
+            plt.show()
+
+
+        fig, ax1 = plt.subplots()
+        ax2 = ax1.twinx()
+
         mean_array = np.array(mean_list) # in index numbers
         mean_diffs = np.diff(mean_array, axis=0)
-        plt.scatter(np.arange(0, len(peaks_indices) - 1, 1), mean_diffs, marker = 'x')
-        plt.xlabel('Peak Index')
-        plt.ylabel('Difference in Mean of Lorentzian Fit (index number)')
-        plt.title('Index Number Difference vs Peak Number')
-        plt.show()
+        ax2.scatter(np.arange(0, len(peaks_indices) - 1, 1), mean_diffs, marker = 'x')
+        ax2.set_xlabel('Peak Index')
+        ax2.set_ylabel('Difference in Mean of Lorentzian Fit (index number)')
+        # plt.title('Index Number Difference vs Peak Number')
+        # plt.show()
 
-        mean_array = np.array(mean_list, dtype = int)
-        mean_times = time_fp[mean_array]
+        mean_array = np.array(mean_list, dtype = int) # in index numbers
+        mean_times = time_fp[mean_array]*1000
         mean_diffs = np.diff(mean_times, axis=0)
-        plt.scatter(np.arange(0, len(peaks_indices) - 1, 1), mean_diffs, marker = 'x')
-        plt.xlabel('Peak Index')
-        plt.ylabel('Difference in Mean of Lorentzian Fit (time)')
-        plt.title('Time Scale Difference vs Peak Number')
+        ax1.scatter(np.arange(0, len(peaks_indices) - 1, 1), mean_diffs, marker = 'x')
+        ax1.set_xlabel('Peak Index')
+        ax1.set_ylabel('Difference in Mean of Lorentzian Fit (time (ms))')
+
+        plt.title('Variation in Difference between Peak Means')
         plt.show()
-
-
-    fig, ax1 = plt.subplots()
-    ax2 = ax1.twinx()
-
-    mean_array = np.array(mean_list) # in index numbers
-    mean_diffs = np.diff(mean_array, axis=0)
-    ax2.scatter(np.arange(0, len(peaks_indices) - 1, 1), mean_diffs, marker = 'x')
-    ax2.set_xlabel('Peak Index')
-    ax2.set_ylabel('Difference in Mean of Lorentzian Fit (index number)')
-    # plt.title('Index Number Difference vs Peak Number')
-    # plt.show()
-
-    mean_array = np.array(mean_list, dtype = int) # in index numbers
-    mean_times = time_fp[mean_array]*1000
-    mean_diffs = np.diff(mean_times, axis=0)
-    ax1.scatter(np.arange(0, len(peaks_indices) - 1, 1), mean_diffs, marker = 'x')
-    ax1.set_xlabel('Peak Index')
-    ax1.set_ylabel('Difference in Mean of Lorentzian Fit (time (ms))')
-
-    plt.title('Variation in Difference between Peak Means')
-    plt.show()
 
 
 peak_height_guess_dec_5 = 0.007
@@ -254,7 +377,7 @@ fp_file_dec_6 = r"C:\Users\Maanas\OneDrive - Imperial College London\Blackboard\
 
 dec_6_data_params = [hfs_file_dec_6, fs_file_dec_6, fp_file_dec_6, peak_height_guess_dec_6, peak_separation_guess_dec_6, window_size_input_dec_6]
 
-params = dec_6_data_params
+params = dec_5_data_params
 
 analysis(*params, all_plots=False)
 
