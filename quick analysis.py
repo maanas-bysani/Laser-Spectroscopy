@@ -24,17 +24,20 @@ def std_dev_to_fwhm(std_devs):
 
 def analysis():
     data = pd.read_csv("C:\\Users\Maanas\\OneDrive - Imperial College London\Blackboard\Lab\Cycle 3\Data\\3 dec.csv")
+    # data = pd.read_csv(r"C:\Users\Maanas\OneDrive - Imperial College London\Blackboard\Lab\Cycle 3\Data\good data - 5 dec\ALL.csv")
     # print(data)
 
     index = data.index
     time = data.iloc[:,0] - data.iloc[:,0][0]
     channel_1 = data.iloc[:,1]
     channel_2 = data.iloc[:,2]
-    ttl_signal = data.iloc[:,3]
+    channel_3 = data.iloc[:,3]
+    ttl_signal = data.iloc[:,-1]
 
 
     plt.plot(time, channel_1, label = 'Channel 1')
     plt.plot(time, channel_2, label = 'Channel 2')
+    plt.plot(time, channel_3, label = 'Channel 3')
     plt.plot(time, ttl_signal, label = 'TTL Signal')
     plt.xlabel('Time (s)')
     plt.ylabel('Voltage (V)')

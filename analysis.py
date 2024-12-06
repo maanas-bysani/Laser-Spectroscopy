@@ -15,7 +15,6 @@ def four_gaussians(x, amp1, mu1, sigma1, c1, amp2, mu2, sigma2, c2, amp3, mu3, s
         amp4 * np.exp(-((x - mu4) ** 2) / (2 * sigma4 ** 2)) + c4
     )
 
-import numpy as np
 
 def n_gaussians(x, *params):
     if len(params) % 4 != 0:
