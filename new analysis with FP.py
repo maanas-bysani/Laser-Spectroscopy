@@ -28,7 +28,7 @@ def std_dev_to_fwhm(std_devs):
     return fwhms
 
 def analysis(hfs_file, fs_file, fp_file, peak_height_guess, peak_separation_guess, window_size_input, \
-             all_plots = False, subtracted_manual = False, subtracted_automatic = True, fabry_perot = True):
+             all_plots = False, subtracted_manual = False, subtracted_automatic = True, fabry_perot = True, fp_region_wise = True):
     hfs_data = pd.read_csv(hfs_file)
     fs_data = pd.read_csv(fs_file)
     fp_data = pd.read_csv(fp_file)
@@ -60,15 +60,15 @@ def analysis(hfs_file, fs_file, fp_file, peak_height_guess, peak_separation_gues
     fp_channel = fp_data["C3 in V"]
     ttl_signal = hfs_data["C4 in V"]
 
-    plt.plot(time, fs_channel, label = 'FS')
-    plt.plot(time, hfs_channel, label = 'HFS')
-    # plt.plot(time, fp_channel, label = 'FP')
+    plt.plot(time, fs_channel, label = 'FS Data')
+    plt.plot(time, hfs_channel, label = 'HFS Data')
+    plt.plot(time_fp, fp_channel, label = 'FP')
     plt.plot(time, ttl_signal, label = 'TTL Signal')
     plt.xlabel('Time (s)')
     plt.ylabel('Voltage (V)')
+    plt.title('Data')
     plt.legend()
     plt.show()
-
 
     if all_plots is True:
         plt.subplot(3, 1, 1)
@@ -177,7 +177,7 @@ def analysis(hfs_file, fs_file, fp_file, peak_height_guess, peak_separation_gues
             [0.09, 0.00913, 0.00002, 0.05, 3],   # Default window = 3
             [0.3, 0.02194, 0.00013, 0.05, 3],    # Default window = 3
             [-0.022, 0.0320, 0.000036, -0.0006, 3], # Default window = 3
-            [0.02, 0.0322, 0.000006, 0.02, 1.5], # Window = 1.5
+            [0.02, 0.0322, 0.000006, 0.02, 1.8], # Window = 1.8
             [0.05, 0.03254, 0.00005, 0.04, 3],   # Default window = 3
             [0.026, 0.03285, 0.00005, 0.03, 3]   # Default window = 3
         ]
@@ -338,23 +338,123 @@ def analysis(hfs_file, fs_file, fp_file, peak_height_guess, peak_separation_gues
         fig, ax1 = plt.subplots()
         ax2 = ax1.twinx()
 
-        mean_array = np.array(mean_list) # in index numbers
+        mean_array = np.array(mean_list, dtype = int) # in index numbers
         mean_diffs = np.diff(mean_array, axis=0)
+        mean_times = time_fp[mean_array]*1000
+        mean_diffs_time = np.diff(mean_times, axis=0)
+
+
         ax2.scatter(np.arange(0, len(peaks_indices) - 1, 1), mean_diffs, marker = 'x')
         ax2.set_xlabel('Peak Index')
-        ax2.set_ylabel('Difference in Mean of Lorentzian Fit (index number)')
-        # plt.title('Index Number Difference vs Peak Number')
-        # plt.show()
+        ax2.set_ylabel('Fitted Lorentzian Spacing (index number)')
 
-        mean_array = np.array(mean_list, dtype = int) # in index numbers
-        mean_times = time_fp[mean_array]*1000
-        mean_diffs = np.diff(mean_times, axis=0)
-        ax1.scatter(np.arange(0, len(peaks_indices) - 1, 1), mean_diffs, marker = 'x')
+        ax1.scatter(np.arange(0, len(peaks_indices) - 1, 1), mean_diffs_time, marker = 'x')
         ax1.set_xlabel('Peak Index')
-        ax1.set_ylabel('Difference in Mean of Lorentzian Fit (time (ms))')
+        ax1.set_ylabel('Fitted Lorentzian Spacing (time (ms))')
 
-        plt.title('Variation in Difference between Peak Means')
+        plt.title('Variation in Lorentzian Spacing')
         plt.show()
+
+
+        # double x and double y axis
+        if all_plots is True:
+            fig=plt.figure()
+            ax=fig.add_subplot(111, label="1")
+            ax2=fig.add_subplot(111, label="2", frame_on=False)
+
+            ax.scatter(np.arange(0, len(peaks_indices) - 1, 1), mean_diffs_time, color="black", marker = 'x')
+            ax.set_xlabel("Peak Index")
+            ax.set_ylabel("Fitted Lorentzian Spacing (time (ms))")
+            ax.tick_params(axis='x')
+            ax.tick_params(axis='y')
+
+            ax2.scatter(mean_times[:-1], mean_diffs, marker = 'x', color = 'white', alpha = 0.1)
+            ax2.xaxis.tick_top()
+            ax2.yaxis.tick_right()
+            ax2.set_xlabel('Time (ms)') 
+            ax2.set_ylabel('Fitted Lorentzian Spacing (index number)')
+            ax2.xaxis.set_label_position('top') 
+            ax2.yaxis.set_label_position('right') 
+            ax2.tick_params(axis='x' )
+            ax2.tick_params(axis='y')
+            plt.title('Variation in Lorentzian Spacing')
+            # plt.grid()
+            plt.show()
+
+
+    # region wise analysis
+
+    if fp_region_wise is True:
+        r1_start = 0.000
+        r1_end = 0.005
+        r2_start = 0.007
+        r2_end = 0.013
+        r3_start = 0.019
+        r3_end = 0.024
+        r4_start = 0.030
+        r4_end = 0.035
+
+        # all plots overlayed
+        # plt.plot(time, fs_channel/np.max(fs_channel), label = 'FS Data')
+        # plt.plot(time, hfs_channel/np.max(hfs_channel), label = 'HFS Data')
+        plt.plot(time, subtracted_spectrum/np.max(subtracted_spectrum), label = 'HFS', alpha = 0.5)
+        plt.plot(time_fp, fp_channel/np.max(fp_channel), label = 'FP', color = 'black', alpha = 0.9, lw = 0.5)
+        plt.plot(time, ttl_signal/np.max(ttl_signal), label = 'TTL Signal', alpha = 0.5)
+        plt.fill_betweenx([0, 1], 0.000, 0.005, color='gray', alpha=0.25, label="R1")
+        plt.fill_betweenx([0, 1], 0.007, 0.013, color='gray', alpha=0.40, label="R2")
+        plt.fill_betweenx([0, 1], 0.019, 0.024, color='gray', alpha=0.55, label="R3")
+        plt.fill_betweenx([0, 1], 0.030, 0.035, color='gray', alpha=0.70, label="R4")
+
+        plt.xlabel('Time (s)')
+        plt.ylabel('Voltage (V)')
+        plt.title('Selected Regions')
+        plt.legend()
+        plt.show()
+
+        # r1_time = time_fp[(time_fp >= r1_start) & (time_fp <= r1_end)]
+        # r2_time = time_fp[(time_fp >= r2_start) & (time_fp <= r2_end)]
+        # r3_time = time_fp[(time_fp >= r3_start) & (time_fp <= r3_end)]
+        # r4_time = time_fp[(time_fp >= r4_start) & (time_fp <= r4_end)]
+
+        # r1_signal = fp_channel[(time_fp >= r1_start) & (time_fp <= r1_end)]
+        # r2_signal = fp_channel[(time_fp >= r2_start) & (time_fp <= r2_end)]
+        # r4_signal = fp_channel[(time_fp >= r3_start) & (time_fp <= r3_end)]
+        # r4_signal = fp_channel[(time_fp >= r4_start) & (time_fp <= r4_end)]
+
+
+        regions = [(r1_start, r1_end), (r2_start, r2_end), \
+                (r3_start, r3_end), (r4_start, r4_end)]
+
+        region_peaks = {}
+        index_offset = 0
+
+        for i, (start, end) in enumerate(regions, start=1):
+            region_mask = (time_fp >= start) & (time_fp <= end)    
+            index_offset = (time_fp - start).abs().idxmin()
+            region_time = time_fp[region_mask]
+            region_signal = fp_channel[region_mask]
+
+            peaks, properties = find_peaks(region_signal, height=peak_height_guess, distance=peak_separation_guess)
+            peaks_heights = properties['peak_heights']
+            peaks = peaks + index_offset
+            region_peaks[f"r{i}"] = {
+                "time": time_fp[peaks],  
+                "indices": peaks,
+                "heights": properties["peak_heights"],
+            }
+
+            plt.plot(region_time, region_signal, label=f'Region {i} Data', alpha=0.7)
+            plt.scatter(region_time[peaks], properties["peak_heights"], color='black', label='Peaks', marker = 'x')
+            plt.xlabel('Time (s)')
+            plt.ylabel('Signal')
+            plt.title(f"Peaks in Region {i}")
+            plt.legend()
+            plt.show()
+
+# need to do lorentzian fits here and then get differences between means of peaks
+# them find average of all of them and get fsr?
+# but do we need to get average or just analyse them separetly as they each are for each hfs splitting state/transition
+
 
 
 peak_height_guess_dec_5 = 0.007
@@ -380,5 +480,8 @@ dec_6_data_params = [hfs_file_dec_6, fs_file_dec_6, fp_file_dec_6, peak_height_g
 params = dec_5_data_params
 
 analysis(*params, all_plots=False)
+
+# analysis(hfs_file, fs_file, fp_file, peak_height_guess, peak_separation_guess, window_size_input, \
+#              all_plots = False, subtracted_manual = False, subtracted_automatic = True, fabry_perot = True, fp_region_wise = True):
 
 # dec_6_data_params = [hfs_file, fs_file, fp_file, peak_height_guess, peak_separation_guess, window_size_input]
