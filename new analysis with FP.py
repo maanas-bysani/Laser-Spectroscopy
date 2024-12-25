@@ -428,6 +428,14 @@ def analysis(hfs_file, fs_file, fp_file, peak_height_guess, peak_separation_gues
         region_peaks = {}
         index_offset = 0
 
+
+        df_times = pd.DataFrame()
+        df_indices = pd.DataFrame()
+        df_heights = pd.DataFrame()
+
+
+
+
         for i, (start, end) in enumerate(regions, start=1):
             region_mask = (time_fp >= start) & (time_fp <= end)    
             index_offset = (time_fp - start).abs().idxmin()
@@ -437,19 +445,124 @@ def analysis(hfs_file, fs_file, fp_file, peak_height_guess, peak_separation_gues
             peaks, properties = find_peaks(region_signal, height=peak_height_guess, distance=peak_separation_guess)
             peaks_heights = properties['peak_heights']
             peaks = peaks + index_offset
-            region_peaks[f"r{i}"] = {
-                "time": time_fp[peaks],  
-                "indices": peaks,
-                "heights": properties["peak_heights"],
-            }
+            df_times[f"region {i}"] = time_fp.iloc[peaks].values
+            df_indices[f"region {i}"] = peaks
+            df_heights[f"region {i}"] = properties["peak_heights"]
 
+            # region_peaks[f"r{i}"] = {
+            #     "time": time_fp[peaks],
+            #     "indices": peaks,
+            #     "heights": properties["peak_heights"],
+            # }
+
+            fig1 = plt.subplot(4,1,i)
             plt.plot(region_time, region_signal, label=f'Region {i} Data', alpha=0.7)
             plt.scatter(region_time[peaks], properties["peak_heights"], color='black', label='Peaks', marker = 'x')
             plt.xlabel('Time (s)')
             plt.ylabel('Signal')
             plt.title(f"Peaks in Region {i}")
             plt.legend()
-            plt.show()
+
+        #     amp_list, mean_list, width_list, offset_list = [], [], [], []
+
+        #     fig2, ax1 = plt.subplots()
+        #     ax2 = ax1.twiny()
+            
+        #     for idx, peak_idx in enumerate(peaks):
+        #         window_size = window_size_input
+        #         start = max(peak_idx - window_size, 0)
+        #         end = min(peak_idx + window_size, len(region_signal))
+        #         region_x = np.arange(start, end)
+        #         region_y = region_signal[start:end]
+
+        #         # amp, mean, width, offset
+        #         initial_guess = [peaks_heights[peaks.tolist().index(peak_idx)], peak_idx, 5, np.min(region_y)]
+
+        #         popt, cov = curve_fit(lorentzian_with_offset, region_x, region_y, p0=initial_guess)
+        #         fitted_curve = lorentzian_with_offset(region_x, *popt)
+
+        #         # amp_list.append(popt[0])
+        #         # mean_list.append(popt[1])
+        #         # width_list.append(popt[2])
+        #         # offset_list.append(popt[3])
+
+        #         if idx == 0:
+        #             ax2.plot(region_x, fitted_curve, color='green', linestyle='--', label='Lorentzian Fit')
+        #             # plt.plot(region_x, fitted_curve, color='green', linestyle='--')
+        #         else:
+        #             ax2.plot(region_x, fitted_curve, color='green', linestyle='--')
+        #             # plt.plot(region_x, fitted_curve, color='green', linestyle='--')
+
+        #     # plt.plot(time_fp, fp_channel, label='Signal', alpha = 0.4, lw = 0.7)
+        #     # plt.scatter(peaks_indices, peaks_heights, color='red', label='Maxima Peaks', zorder=5, marker='x')
+        #     # plt.title('Signal with Lorentzian Fits')
+        #     # plt.xlabel('Peak Index')
+        #     # plt.ylabel('Voltage (V)')
+        #     # plt.xticks(peaks_indices, range(1, len(peaks_indices) + 1))
+        #     # plt.legend()
+        #     # plt.show()
+
+        #     ax1.plot(region_time, region_signal, label='Signal', alpha = 0.4, lw = 0.7)
+        #     ax1.set_xlabel('Time (ms)')
+        #     ax1.set_ylabel('Voltage (V)')
+
+        #     ax2.scatter(peaks, peaks_heights, color='red', label='Lorentzian Peaks', zorder=5, marker='x', s = 20, linewidths=0.5)
+        #     ax2.set_xlabel('Peak Index')
+        #     # ax2.set_xticks(peaks, range(1, len(peaks) + 1))    
+
+        #     plt.title('Signal with Lorentzian Fits')
+        #     handles, labels = ax1.get_legend_handles_labels()
+        #     handles2, labels2 = ax2.get_legend_handles_labels()
+        #     handles.extend(handles2)
+        #     labels.extend(labels2)
+        #     plt.legend(handles=handles, labels=labels, loc='best')
+        #     plt.show()
+        # print(df_times)
+        # print(df_heights)
+        # print(df_indices)
+
+
+
+        region1_df = pd.DataFrame()
+        region2_df = pd.DataFrame()
+        region3_df = pd.DataFrame()
+        region4_df = pd.DataFrame()
+
+        # List to hold references to the DataFrame variables
+        region_dfs = [region1_df, region2_df, region3_df, region4_df]
+
+        # Loop over the regions and assign DataFrames
+        for i, (start, end) in enumerate(regions, start=1):
+            # Create mask and extract time and signal
+            region_mask = (time_fp >= start) & (time_fp <= end)
+            region_time = time_fp[region_mask]
+            region_signal = fp_channel[region_mask]
+            
+            # Create a DataFrame for the current region
+            region_df = pd.DataFrame({
+                'Time': region_time.values,  # Extract values to avoid index complications
+                'Signal': region_signal.values
+            })
+            region_dfs[i - 1] = region_df
+
+
+        plt.figure(figsize=(10, 8))
+        for i, region_df in enumerate(region_dfs, start=1):
+            plt.subplot(1, 4, i)
+            plt.plot(region_df['Time'], region_df['Signal'], label=f'Region {i}', alpha=0.7)
+            plt.title(f'Region {i}')
+            plt.xlabel('Time (s)')
+            plt.ylabel('Signal')
+            plt.legend()
+        plt.tight_layout()
+        plt.show()
+
+
+
+
+
+
+
 
 # need to do lorentzian fits here and then get differences between means of peaks
 # them find average of all of them and get fsr?

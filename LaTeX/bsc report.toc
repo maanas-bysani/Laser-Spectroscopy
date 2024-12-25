@@ -1,0 +1,19 @@
+\contentsline {section}{\numberline {1}Rubidium-87 Structure - M}{1}{}%
+\contentsline {section}{\numberline {2}Laser Cooling - M}{2}{}%
+\contentsline {section}{\numberline {3}Doppler Cooling - M}{3}{}%
+\contentsline {subsection}{\numberline {3.1}Doppler Cooling Limit}{4}{}%
+\contentsline {section}{\numberline {4}Magneto-Optical Trapping - M}{5}{}%
+\contentsline {section}{\numberline {5}Ion Pump - do we need this? - M}{5}{}%
+\contentsline {section}{\numberline {6}Vacuum System - do we need this?}{6}{}%
+\contentsline {section}{\numberline {7}Optical System - M}{6}{}%
+\contentsline {subsection}{\numberline {7.1}Polarisation}{6}{}%
+\contentsline {section}{\numberline {8}Number of Atoms}{6}{}%
+\contentsline {section}{\numberline {9}Temperature}{6}{}%
+\contentsline {section}{\numberline {10}Setup}{7}{}%
+\contentsline {section}{\numberline {11}Adjustment of Wave-plate Angles}{7}{}%
+\contentsline {section}{\numberline {12}CMOS Camera Calibration}{9}{}%
+\contentsline {section}{\numberline {13}Measuring the MOT Size and Shape}{10}{}%
+\contentsline {section}{\numberline {14}The }{10}{}%
+\contentsline {section}{\numberline {15}MOT Loading Curve}{11}{}%
+\contentsline {section}{\numberline {16}Temperature of the MOT by Equipartition}{11}{}%
+\contentsline {section}{\numberline {17}Nodes in the MOT}{11}{}%

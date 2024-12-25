@@ -1,0 +1,720 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.13)  15 DEC 2024 14:54
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**"c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report"
+(c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex
+LaTeX2e <2024-11-01> patch level 1
+L3 programming layer <2024-11-02>
+(c:/texlive/2024/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2024/06/29 v1.4n Standard LaTeX document class
+(c:/texlive/2024/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2024/06/29 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count196
+\c@section=\count197
+\c@subsection=\count198
+\c@subsubsection=\count199
+\c@paragraph=\count266
+\c@subparagraph=\count267
+\c@figure=\count268
+\c@table=\count269
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen141
+) (c:/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count270
+\l__pdf_internal_box=\box52
+) (./bsc report.aux
+
+LaTeX Warning: Label `table:selection rules' multiply defined.
+
+
+LaTeX Warning: Label `fig:CamCalib' multiply defined.
+
+)
+\openout1 = `"bsc report.aux"'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 2.
+LaTeX Font Info:    ... okay on input line 2.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 2.
+LaTeX Font Info:    ... okay on input line 2.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 2.
+LaTeX Font Info:    ... okay on input line 2.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 2.
+LaTeX Font Info:    ... okay on input line 2.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 2.
+LaTeX Font Info:    ... okay on input line 2.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 2.
+LaTeX Font Info:    ... okay on input line 2.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 2.
+LaTeX Font Info:    ... okay on input line 2.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 8.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 8.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 8.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:18: Undefined control sequence.
+l.18 \fancyhead
+               [RE,LO]{\sffamily {Table of Contents}}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+(./bsc report.toc
+
+[1
+
+{c:/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}])
+\tf@toc=\write3
+\openout3 = `"bsc report.toc"'.
+
+
+
+[2]
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:25: Undefined control sequence.
+l.25 \fancyhead
+               [LE,RO]{\slshape \rightmark}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:26: Undefined control sequence.
+l.26 \fancyhead
+               [LO,RE]{\slshape \leftmark}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:29: Undefined control sequence.
+l.29 \chapter
+             {Introduction - do we need this?}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:36: Undefined control sequence.
+l.36 \chapter
+             {Theoretical Background}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+
+[1
+
+
+]
+Overfull \hbox (29.32852pt too wide) detected at line 61
+\OML/cmm/m/it/12 g[] \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 g[] \OT1/cmr/m/n/12 + (\OML/cmm/m/it/12 g[] \OMS/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 g[]\OT1/cmr/m/n/12 )[] \OMS/cmsy/m/n/12 ^^Y \OML/cmm/m/it/12 g[][];[]
+ []
+
+
+LaTeX Warning: Reference `fig:rb87 structure' on page 2 undefined on input line 66.
+
+
+LaTeX Warning: Citation `stark_thesis_2011' on page 2 undefined on input line 66.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:70: Undefined control sequence.
+l.70   \captionsetup
+                    {font=footnotesize}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:75: Undefined control sequence.
+l.75 ...$n$ & No restriction ($\Delta n = {\mathbb
+                                                  {Z}}$) \\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (57.33232pt too wide) in paragraph at lines 72--96
+ []  
+ []
+
+
+LaTeX Warning: Citation `metcalf' on page 2 undefined on input line 96.
+
+
+LaTeX Warning: Citation `ap notes' on page 2 undefined on input line 96.
+
+
+LaTeX Warning: Citation `steck textbook' on page 2 undefined on input line 96.
+
+
+LaTeX Warning: Citation `metcalf' on page 2 undefined on input line 96.
+
+
+LaTeX Warning: Citation `ap notes' on page 2 undefined on input line 96.
+
+
+LaTeX Warning: Citation `steck textbook' on page 2 undefined on input line 96.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+
+[2]
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:112: Undefined control sequence.
+l.112     F_{sc} = \hbar k R_{sp} \implies
+                                           \frac{\hbar k s_0 \gamma/2}{1 + s...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+
+[3]
+
+LaTeX Warning: Reference `fig: optical molasses force simulation plot' on page 4 undefined on input line 128.
+
+
+
+[4]
+
+LaTeX Warning: Reference `fig: main setup' on page 5 undefined on input line 179.
+
+
+Underfull \vbox (badness 7116) has occurred while \output is active []
+
+
+
+[5]
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:201: Undefined control sequence.
+l.201 \chapter
+              {Experimental Method}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: Reference `fig: b field' on page 6 undefined on input line 203.
+
+
+
+[6]
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:206: Undefined control sequence.
+l.206   \captionsetup
+                     {font=footnotesize}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (55.20245pt too wide) in paragraph at lines 208--220
+ []  
+ []
+
+
+LaTeX Warning: Command \textdegree invalid in math mode on input line 229.
+
+
+LaTeX Warning: Command \textdegree invalid in math mode on input line 229.
+
+Missing character: There is no ° in font cmr12!
+
+
+[7]
+
+LaTeX Warning: Command \textdegree invalid in math mode on input line 231.
+
+
+LaTeX Warning: Command \textdegree invalid in math mode on input line 231.
+
+Missing character: There is no ° in font cmr12!
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:235: Undefined control sequence.
+l.235     \includegraphics
+                          [width = 12cm]{./figures/branch2_qwp.png}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:235: Missing $ inserted.
+<inserted text> 
+                $
+l.235 ...graphics[width = 12cm]{./figures/branch2_
+                                                  qwp.png}
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:235: Extra }, or forgotten $.
+l.235 ...[width = 12cm]{./figures/branch2_qwp.png}
+                                                  
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:236: Missing $ inserted.
+<inserted text> 
+                $
+l.236 ...$-45$Â° to the incoming light (in blue).}
+                                                  
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:238: Missing } inserted.
+<inserted text> 
+                }
+l.238 \end{figure}
+                  
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:243: Undefined control sequence.
+l.243     \subfloat
+                   [\centering \justifying Lorem ipsum dolor sit amet, conse...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:243: Undefined control sequence.
+l.243     \subfloat[\centering \justifying
+                                           Lorem ipsum dolor sit amet, conse...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:244: Undefined control sequence.
+l.244     {{\includegraphics
+                            [width=0.50\textwidth]{./figures/branch2_qwp.png...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:244: Missing number, treated as zero.
+<to be read again> 
+                   ]
+l.244     {{\includegraphics[width=0.50\textwidth]
+                                                  {./figures/branch2_qwp.png...
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:244: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   ]
+l.244     {{\includegraphics[width=0.50\textwidth]
+                                                  {./figures/branch2_qwp.png...
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:244: Missing $ inserted.
+<inserted text> 
+                $
+l.244 ...[width=0.50\textwidth]{./figures/branch2_
+                                                  qwp.png} }}
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:244: Extra }, or forgotten $.
+l.244 ....50\textwidth]{./figures/branch2_qwp.png}
+                                                   }}
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:244: Extra }, or forgotten $.
+l.244 ...0\textwidth]{./figures/branch2_qwp.png} }
+                                                  }
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:244: Extra }, or forgotten $.
+l.244 ...\textwidth]{./figures/branch2_qwp.png} }}
+                                                  
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:246: Undefined control sequence.
+l.246     \subfloat
+                   [\centering \justifying Lorem ipsum dolor sit amet, conse...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:246: Undefined control sequence.
+l.246     \subfloat[\centering \justifying
+                                           Lorem ipsum dolor sit amet, conse...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:247: Undefined control sequence.
+l.247     {{\includegraphics
+                            [width=0.51\textwidth]{./figures/b2_qwp_analysis...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:247: Missing number, treated as zero.
+<to be read again> 
+                   ]
+l.247     {{\includegraphics[width=0.51\textwidth]
+                                                  {./figures/b2_qwp_analysis...
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:247: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   ]
+l.247     {{\includegraphics[width=0.51\textwidth]
+                                                  {./figures/b2_qwp_analysis...
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:248: Missing $ inserted.
+<inserted text> 
+                $
+l.248     \caption{Main caption}
+                                
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Overfull \hbox (2154.55945pt too wide) in paragraph at lines 243--248
+ \OT1/cmr/m/n/12 [width=0.50]./figures/branch2$[]\OML/cmm/m/it/12 wp:png \OT1/cmr/m/n/12 [\OML/cmm/m/it/12 Loremipsumdolorsitamet; consecteturadipiscingelit; seddoeiusmodtemporincididuntutlaboreetdoloremagnaaliqua:Utenimadminimveniam; quisnostrudexercitationullamcolaborisnisiutaliquipexeacommodoconsequat:Duisauteiruredolorinreprehenderitinvoluptatevelitessecillumdoloreeufugiatnullapariatur:Excepteursintoccaecatcupidatatnonproident; suntinculpaquiofficiadeseruntmollitanimidestlaborum:\OT1/cmr/m/n/12 ][]$ 
+ []
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:250: Missing } inserted.
+<inserted text> 
+                }
+l.250 \end{figure}
+                  
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:250: Missing } inserted.
+<inserted text> 
+                }
+l.250 \end{figure}
+                  
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:250: Missing } inserted.
+<inserted text> 
+                }
+l.250 \end{figure}
+                  
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+
+[8{c:/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+
+LaTeX Warning: Command \textdegree invalid in math mode on input line 258.
+
+
+LaTeX Warning: Command \textdegree invalid in math mode on input line 258.
+
+Missing character: There is no ° in font cmr12!
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:267: Undefined control sequence.
+l.267     \includegraphics
+                          [width = 12cm]{./figures/b2_qwp_analysis.png}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:267: Missing $ inserted.
+<inserted text> 
+                $
+l.267 ...cludegraphics[width = 12cm]{./figures/b2_
+                                                  qwp_analysis.png}
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:267: Extra }, or forgotten $.
+l.267 ...th = 12cm]{./figures/b2_qwp_analysis.png}
+                                                  
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:268: Missing $ inserted.
+<inserted text> 
+                $
+l.268 ...$-45$Â° to the incoming light (in blue).}
+                                                  
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:270: Missing } inserted.
+<inserted text> 
+                }
+l.270 \end{figure}
+                  
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:276: Undefined control sequence.
+l.276 ...er the image to be a matrix $M_{ij}=\text
+                                                  {value of pixel at locatio...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+
+[9]
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:288: Undefined control sequence.
+l.288 ...ooling and repump light ($\approx780\text
+                                                  {nm}$) so we can make the ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:292: Undefined control sequence.
+l.292     \includegraphics
+                          [width = 12cm]{./figures/Cam_Calibration_Graph.png}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:292: Missing $ inserted.
+<inserted text> 
+                $
+l.292 ...ludegraphics[width = 12cm]{./figures/Cam_
+                                                  Calibration_Graph.png}
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:292: Extra }, or forgotten $.
+l.292 ...2cm]{./figures/Cam_Calibration_Graph.png}
+                                                  
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:293: Missing $ inserted.
+<inserted text> 
+                $
+l.293 ...r power and exposure time of the capture}
+                                                  
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:295: Missing } inserted.
+<inserted text> 
+                }
+l.295 \end{figure}
+                  
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:296: Undefined control sequence.
+l.296 ...of $\zeta=(6.1\pm0.1)\times10^{-17} \text
+                                                  { J}/\text{count}$. We do ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:296: Undefined control sequence.
+l.296 ...(6.1\pm0.1)\times10^{-17} \text{ J}/\text
+                                                  {count}$. We do not conver...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:304: Undefined control sequence.
+l.304 \chapter
+              {Results and Errors}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+
+[10]
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:314: Undefined control sequence.
+l.314     \includegraphics
+                          [width = 12cm]{./figures/texp_40000_pow_0.45.png}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:314: Missing $ inserted.
+<inserted text> 
+                $
+l.314 ...udegraphics[width = 12cm]{./figures/texp_
+                                                  40000_pow_0.45.png}
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:314: Extra }, or forgotten $.
+l.314 ... 12cm]{./figures/texp_40000_pow_0.45.png}
+                                                  
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:315: Missing $ inserted.
+<inserted text> 
+                $
+l.315     \caption{}
+                    
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:317: Missing } inserted.
+<inserted text> 
+                }
+l.317 \end{figure}
+                  
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:335: Undefined control sequence.
+l.335 \chapter
+              {Discussion}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+c:/Users/Maanas/Documents/GitHub/Laser-Spectroscopy/LaTeX/bsc report.tex:347: Undefined control sequence.
+l.347 \chapter
+              {Conclusion}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+No file "bsc report".bbl.
+
+
+[11] (./bsc report.aux)
+ ***********
+LaTeX2e <2024-11-01> patch level 1
+L3 programming layer <2024-11-02>
+ ***********
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 512 strings out of 473330
+ 9769 string characters out of 5723877
+ 405489 words of memory out of 5000000
+ 23706 multiletter control sequences out of 15000+600000
+ 564025 words of font info for 55 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 35i,11n,50p,1148b,277s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
+Output written on "bsc report.pdf" (13 pages, 192352 bytes).
+PDF statistics:
+ 118 PDF objects out of 1000 (max. 8388607)
+ 74 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

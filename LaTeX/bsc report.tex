@@ -1,0 +1,366 @@
+\documentclass[12pt,twoside]{article}
+\begin{document}
+
+\section*{Acknowledgments}
+
+Useful things to copy and paste:
+
+$^{87}$Rb
+$^{85}$Rb
+$\vec{v}$
+\hspace{10pt}
+
+% \clearpage{\pagestyle{empty}\cleardoublepage}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%--- table of contents
+\fancyhead[RE,LO]{\sffamily {Table of Contents}}
+\tableofcontents 
+
+
+\clearpage{\pagestyle{empty}\cleardoublepage}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\fancyhead[LE,RO]{\slshape \rightmark}
+\fancyhead[LO,RE]{\slshape \leftmark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Introduction - do we need this?}
+
+Uses of laser cooling and trapping
+
+Why laser cool rubidium
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Theoretical Background}
+\section{Rubidium-87 Structure - M}
+
+\hspace{10pt} Rubidium is an alkali metal with atomic number 37. As a group 1 element, Rubidium has an electronic configuration of [Kr]5s$^1$. The single valence electron in its outermost shell presents a relatively simple atomic structure making Rubidium highly susceptible to magnetic and optical manipulation, which lends itself to laser cooling and trapping experiments. 
+
+Rubidium has 2 natural isotopes $^{85}$Rb and $^{87}$Rb, with a natural abundance of  72.17\% and 27.83\% respectively. Whilst the Rubidium sample in the cell used in this experiment reflects this composition, we focus on laser cooling of $^{87}$Rb. $^{87}$Rb is not a stable isotope: it decays into $\beta^{-} + ^{87}$Sr with an energy of 0.283 MeV, but has an extremely long half-life, allowing us to consider it stable.
+
+The most relevant optical transitions for laser cooling involve the 5s ground state and 5p excited state which forms the two D-line components of $^{87}$Rb - D$_1$ and D$_2$ corresponding to the 5s$_{1/2}$ $\rightarrow$ 5p$_{1/2}$ and 5s$_{1/2}$ $\rightarrow$ 5p$_{3/2}$ - the D$_2$ transition is studied here and has historically been more relevant to quantum and AMO physics experiments. The D${_1}$ transition occurs at a wavelength of 794.98 nm ($\approx$ 377.11 THz), whilst the D${_2}$ transition occurs at a wavelength of 780.24 nm ($\approx$ 384.23 THz).
+
+The fine structure arises due to the coupling between the electronic orbital angular momentum, $\textbf{\textit{L}}$, and the electronic spin angular momentum, $\textbf{\textit{S}}$. The total electronic angular momentum $\textbf{\textit{J}}$ is simply the sum of these two vectors: $\textbf{\textit{J}} = \textbf{\textit{L}} + \textbf{\textit{S}}$. The quantum number $j$ lies in the range $|l - s| \le j \le l + s$.
+
+The hyperfine splitting is introduced due to the coupling between the nuclear angular momentum, $\textbf{\textit{I}}$ and the total electronic angular momentum, $\textbf{\textit{J}}$. As before, the total atomic angular momentum $\textbf{\textit{F}}$ is the sum of these two angular momentum vectors: $\textit{\textbf{F}} = \textit{\textbf{J}} + \textit{\textbf{I}}$. As before, the quantum number $f$ lies in the range $|j - i| \le f \le j + i$.
+
+Each hyperfine level is further split into multiple magnetic sublevels in the presence of an external (weak) magnetic field due to the Zeeman effect [cite]. There are a total of $2f + 1$ sublevels, each labelled by $-f \le m_f \le f$. The introduction of these magnetic sublevels removes all degeneracy, and every eigenstate has a unique energy, and we can now access each state individually. The energy shift due to the Zeeman effect is given by:
+
+\begin{equation}
+    \Delta E_B^{(hfs)} = \mu_B g_F m_f B,
+    \label{eqn: zeeman energy}
+\end{equation}
+
+where $\mu_B = \frac{e\hbar}{2m_e}$ is the Bohr magneton, and the state-dependent (Land\'e) g-factor, $g_f$, is given by:
+\begin{equation}
+    g_f = g_j + (g_i - g_j) \frac{f(f+1) + i(i+1) - j(j+1)}{2f(f+1)} 
+    \approx g_j \frac{f(f+1) + j(j+1) - i(i+1)}{2f(f+1)},
+    \label{eqn: g factor}
+\end{equation}
+
+where the second approximate term neglects the nuclear contribution, resulting in a correction of 0.1\%, as $g_i$ is much smaller than $g_j$ [cite][steck textbook]. This Zeeman effect is when a 'weak', static external magnetic field is present; in the presence of a 'strong' magnetic field, the Paschen–Back effect where the shifts due to the magnetic field interactions dominate and the hyperfine structure shifts are treated as perturbations. [cite][steck textbook]
+
+
+The energy level structure for $^{87}$Rb is shown in figure \ref{fig:rb87 structure} \cite{stark_thesis_2011}, along with the selection rules in table \ref{table:selection rules}. The relevant transitions for this experiment are labelled using arrows.
+
+
+\begin{table}[h!]
+  \captionsetup{font=footnotesize}
+\begin{center}      
+\begin{tabular}{c | c | c}
+\textbf{Quantum Number} & \textbf{Symbol}        & \textbf{Selection Rule} \\
+\hline
+Principal Quantum Number & $n$ & No restriction ($\Delta n = {\mathbb{Z}}$) \\
+
+Orbital Electronic Angular Momentum & $l$ & $\Delta l = \pm 1$ \\
+
+Magnetic Electronic Angular Momentum & $m_l$ & $\Delta m_l = 0, \pm 1$ \\
+
+Spin Electronic Angular Momentum & $s$ & $\Delta s = 0$ \\
+
+Total Electronic Angular Momentum & $j$ & $\Delta j = 0, \pm 1$ \\
+
+Magnetic Total Electronic Angular Momentum & $m_j$ & $\Delta m_j = 0 \pm 1$ \\
+
+Nuclear Spin & $i$ & $\Delta i = 0$ \\
+
+Magnetic Nuclear Spin & $m_i$ & $\Delta m_i = 0$ \\
+
+Total Atomic Angular Momentum & $f$ & $\Delta f = 0, \pm 1$ \\
+
+Magnetic Total Atomic Angular Momentum & $m_f$ & $\Delta m_f = 0, \pm 1$ \\
+
+\end{tabular}
+\newline \caption{Table of the selection rules in atomic physics. Photons do not interact with the nuclear components hence the change in their angular momentum numbers are 0. \cite{metcalf}\cite{ap notes} \cite{steck textbook}.}
+\label{table:selection rules}
+\end{center}
+\vspace{-20pt}
+\end{table}
+
+
+
+
+
+
+\section{Laser Cooling - M}
+Consider a two-level atom with the ground and excited state separated by an energy corresponding to a resonant frequency $\omega_a$ and a laser beam of frequency $\omega_l$ = $\omega_a$. When an atom is placed in a laser field, there are three well-defined processes which can take place: absorption, spontaneous emission, and stimulated emission [ref].
+
+When the atom absorbs a photon, it experiences a momentum shift of $\hbar k$, where $k$ is the wave vector of the incident light, in the direction of the laser field. When a photon is emitted via stimulated emission, it experiences a momentum shift of $\hbar k$ in the direction opposite to the laser field, but this is not of interest to us here. However, when spontaneous emission occurs, the photon is emitted in a random direction, and the atom experiences a 'recoil' momentum shift in a direction opposite to that of the emitted photon's trajectory. Over a \textit{long enough} period, the momentum shift due to spontaneous emission averages to 0. Therefore, over a long period, the atom experiences a net momentum shift in the direction of the laser field due to the absorption process only, and this is related to a force known as the scattering force, $F_{sc}$:
+\begin{equation}
+    F_{sc} = \hbar k R_{sp} \implies \frac{\hbar k s_0 \gamma/2}{1 + s_0 + (2\delta/\gamma)^2},
+    \label{eqn: scattering force 1 beam}
+\end{equation}
+where $R_{sp}$ is the steady-state rate of spontaneous emission and can be evaluated by solving the optical Bloch equations [cite]. $s_0$ is the saturation parameter and is defined as the ratio between the laser intensity and saturation intensity ($\frac{I}{I_0}$), $\gamma$ is the natural linewidth of the atomic transition, and $\delta$ is the detuning of the laser i.e. ($\omega_l - \omega_a$). [quantum optics steck][van rens thesis][metcalf][cite]
+
+\section{Doppler Cooling - M}
+The atoms in the vacuum cell have speeds described by the Boltzmann distribution. The most common method of laser cooling - Doppler cooling - uses this property to selectively slow down atoms moving at higher speeds. An atom moving with velocity $\vec{v}$ experiences a Doppler shift $\omega_d = -\vec{k} \cdot \vec{v}$ in the laser field. The effective laser detuning $\delta'$ is now $\delta + \omega_d$, and the laser is resonant when $\delta' = 0$ or when $\delta = -\omega_d = \vec{k} \cdot \vec{v}$. By referring back to the momentum shift idea, we want to selectively cool atoms moving in a direction opposite to that of the laser field i.e. $\vec{v} \parallel -\vec{k}$, which implies that $\delta = \vec{k} \cdot \vec{v} < 0$, and the light will be red-detuned with respect to $\omega_a$. Atoms nearly stationary experience a red-shifted light and have a low probability of interacting, and atoms moving along the laser field see the light having an additional red-shift, further decreasing their probability of interacting with the optical field.
+
+To slow down atoms moving along our initial optical field, we can send a red-shifted counter-propagating beam. For small atom velocities, the forces from the two light beams can be added:
+\begin{equation}
+    F_{sc} = \frac{\hbar k s_0 \gamma / 2}{1 + s_0 + (2\frac{\delta - \vec{k} \cdot \vec{v}} {\gamma})^2} -  \frac{\hbar k s_0 \gamma / 2}{1 + s_0 + (2\frac{\delta + \vec{k} \cdot \vec{v}} {\gamma})^2}
+    \approx \frac{8 \hbar k^2 \delta s_0 v}{\gamma (1 + s_0 + (2\frac{\delta}{\gamma})^2)^2} 
+    = - \beta v,
+\label{eqn: scattering force 2 beams}
+\end{equation}
+
+where the effective detuning has been taken into account, and we define $\beta$ as a damping constant. Such a setup in 1D is called a 1D optical molasses, and is pictorially represented in figure \ref{fig: optical molasses force simulation plot}.
+
+Similarly, for a 3D setup with 3 pairs of counter-propagating beams and using the small atom velocity approximation, we get:
+\begin{equation}
+    \vec{F_{sc}} \approx \frac{8 \hbar k^2 \delta s_0}{\gamma (1 + s_0 + (\frac{2\delta}{\gamma})^2)^2} \vec{v}
+\label{eqn: scattering force 6 beams}
+\end{equation}
+
+
+\subsection{Doppler Cooling Limit}
+As the atoms approach $v = 0$, they are equally likely to absorb a photon from each of the counter-propagating beams and the recoil 'kicks' from both cancel out. The recoil kicks due to spontaneous emission are also in random directions resulting in no net force over a sufficiently long time scale. However, these random kicks will introduce quantum fluctuations in the velocity space, effectively moving the atoms away from $v = 0$, heating them up and preventing them from reaching absolute zero.
+
+This method results in a minimum temperature achieved when $\delta = -\gamma/2$, and is known as the Doppler Limit:
+\begin{equation}
+    T_D = \frac{\hbar \gamma}{2 k_b},
+    \label{eqn: doppler limit}
+\end{equation}
+which is derived by accounting for the variance in velocity due to each absorption-scattering event, and relating this expression (in steady state) to the kinetic energy and thus, a temperature. [steck textbook]
+
+
+\section{Magneto-Optical Trapping - M}
+- use of circularly polarised light
+- refer to the x diagram
+
+
+\section{Ion Pump - do we need this? - M}
+Nearly all laser cooling setups include an ion pump which is used to sustain the low pressure required. Several types of ion pumps exist - each using a different mechanism; the MiniMOT setup uses the most common - sputter ion pump (SIP). The SIP operates by sputtering a metal getter, often Titanium, and consists of an array of Penning traps with a cylindrical-shell anode that is placed between the two Titanium cathodes [cite]. Typical operating voltages between the electrodes are around 4kV. Permanent magnets located outside the vacuum chamber of the pump create a magnetic field, usually on the order of 0.1T, along the axis of the cylindrical anode. 
+The electric field helps to trap free charges axially while the magnetic field helps radial confinement. Together, the EM field causes electrons, or free charges in general, to oscillate around the centre of the trap in a direction parallel to the axis of cylindrical anodes due to the Lorentz force. 
+
+
+
+
+
+Upon analysis of the equations of motion for the electron, it becomes evident that they undergo harmonic oscillation 
+
+
+Analysing the equations of motion
+
+
+
+The MiniMOT setup also includes an ion pump connected to the vacuum system and controlled by an external DC power supply. The nominal operating ion pump voltage was 6kV, and the typical pressure/vacuum level was $10^{-10}$ mbar.
+
+- how it works
+- what its made of
+- expected pressure and what it means
+
+\section{Vacuum System - do we need this?}
+
+
+\section{Optical System - M}
+
+In this experiment, we used the pre-assembled \textit{MiniMOT} setup by \textit{KT-Quantom}. Cooling ($\approx$66.7\%) and repump ($\approx$33.3\%) light are provided from the Bay3 Rubidium experiment through a Polarization Maintaining Fiber; the total power from the two beams fluctuated around 3.0mW. The cooling light is detuned from $\omega_a$ by -2.6$\gamma$ and the repump is detuned by -2.0$\gamma$, the laser fields are red-shifted to take advantage of the Doppler effect discussed earlier. The rest of the setup uses standard optical components such as half-waveplates, quarter-waveplates, dielectric mirrors, polarizing beam splitter cubes, and a collimating lens. This setup along with the CMOS camera is shown in figure \ref{fig: main setup}. [cite minimot manual]
+
+
+\subsection{Polarisation}
+
+
+\section{Number of Atoms}
+The MOT scatters cooling light at a rate:
+
+With the camera positioned at a distance $d$ with focal length $f$ and F-number $F$, the proportion of the scattered power, $P_{sc}$, that the detector receives is:
+
+$P$
+
+The CMOS gives us an image of the MOT, and by summing the value of the pixels across the MOT region of the image---$N_{counts}$, we can get to the total number atoms in the MOT:
+
+\begin{equation}
+N_{atoms}=\frac{8\pi(1+4(\delta/\Gamma)^{2}+(6I_{0}/I))}{\Gamma(6I_{0}/I)t_{exp}\eta_{counts}d\Omega}N_{counts} \label{eqn: n atoms}
+\end{equation}
+
+\section{Temperature}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Experimental Method}
+\section{Setup}
+The vacuum cell contains $^{85}$Rb and $^{87}$Rb in natural abundance proportions. The integrated display is used to control the current supplied to the coils, which varies the strength and direction of the magnetic fields. A simulation of the magnetic field configurations and their resulting field profiles are shown in figure \ref{fig: b field}.
+
+\begin{table}[h!]
+  \captionsetup{font=footnotesize}
+\begin{center}      
+\begin{tabular}{c | c }
+\textbf{Parameter} & \textbf{Value (with uncertainty where applicable) } \\
+\hline
+Beam Diameter & $12.5 \pm 0.01$ mm\\
+Camera Working Distance ($d_0$) & $25.2 \pm 0.5$ cm\\
+Camera F-Number & $2.4$\\
+Camera Focal Length & $25$ mm\\
+Detuning of Cooling Light & $-2.6\Gamma$ \\
+Detuning of Repump Light & $-2.0\Gamma$ \\
+Power Split (Cooling : Repump) & $2:1$\\
+Pressure on Ion Pump Gauge & $\left(2.0\pm0.1\right)\times10^{-8}$ Pa\\
+\end{tabular}
+\newline \caption{Parameters of our optical setup}
+\label{table:selection rules}
+\end{center}
+\vspace{-20pt}
+\end{table}
+
+\section{Adjustment of Wave-plate Angles}
+\hspace{10pt} To obtain circularly polarised light, we pass linearly polarised light through quarter wave-plates. The linear polarisation is ensured by the polarising beam-splitters---they reflect the p-polarised component and transmit the s-polarised component of the incoming light. For the horizontal plane of the optical setup, this gives one branch that is polarised in the plane (horizontal polarisation), and one branch . 
+
+To get circularly polarised light from a quarter waveplate, the polarisation vector of the incoming light must be at $\pm45°$ degrees to the slowing axis of the waveplate. This is the function of the first quarter waveplate. The second quarter waveplate simply converts the circularly polarised light to linearly polarised light before being reflected off of a mirror back towards the MOT. This step ensures that the handedness of the circular polarisation is the same for the returning beam. The key point is that the angle of the second quarter waveplate does not matter because the circularly polarised light has no preferred set of axes. 
+
+If the first quarter waveplate is set at $\pm45°$  to the incoming light, the returning light should have the same polarisation as that coming in. In the case of Branch 2, we send in horizontally polarised light, so we expect to see horizontally polarised light coming back. We can thus determine the correct angle of the first quarter waveplate by minimising the vertical component of the returning beam. We can use a polarising beam-splitter to separate the two back-propagating polarisation components, and we measure the power of the vertical component using a powermeter. We show the expected intensity variation with quarter waveplate angle in figure \ref{fig:waveplate_intensity}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width = 12cm]{./figures/branch2_qwp.png}
+    \caption{This plot shows our simulated results for the vertical polarisation intensity of the returning beam when we vary the angle of the first quarter waveplate. We identify three types of minima which occur when: when the angle of the first QWP is the same as the angle of the second QWP (in green), when fast axis of the first QWP is at $+45$° to the incoming light (in red), when the first QWP is at $-45$° to the incoming light (in blue).}
+    \label{fig:waveplate_intensity}
+\end{figure}
+
+
+\begin{figure}[h]
+    \centering
+    \subfloat[\centering \justifying Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.]
+    {{\includegraphics[width=0.50\textwidth]{./figures/branch2_qwp.png} }}
+    \hspace{-17pt}
+    \subfloat[\centering \justifying Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.]
+    {{\includegraphics[width=0.51\textwidth]{./figures/b2_qwp_analysis.png} }}
+    \caption{Main caption}
+    \label{fig:waveplate_analysis}
+\end{figure}
+
+As illustrated in figure \ref{fig:waveplate_intensity}, we need to be able to distinguish the different kinds of minima. The minimum due to the angle of the second quarter waveplate can be identified because the angle at which it occurs changes when we change the angle. We thus collected two datasets for two different waveplate angles, this way we know to exclude the minima that changed position. The two datasets are plotted in figure \ref{fig:b2_qwp}. To compute the minima we fitted functions of the form:
+
+\begin{equation}
+f(x)=\left( A\sin{\left(\frac{\pi f}{180}x- \phi \right)} + O_1 \right)^2 +O_2,
+\end{equation}
+
+where $A$ is the amplitude of the sine curve, $f$ is a frequency factor (which in theory is: $f=4$), $\phi$ is a phase term that arises because the rotator angles don't correspond to the actual angles of the waveplate axes, and $O_1$ is related to the angle of the second quarter waveplate (if the 2nd QWP is aligned with the 1st QWP at $\pm45°$, then $O_1 =0$). The added offset, $O_2$, is to account for background light which is added on to our measurement of the power. The minima occur at:
+
+\begin{equation}
+\theta_n=\frac{180f}{\pi}\left(\arcsin{\left(\frac{-O_1}{A}\right)}-\phi\right) + \frac{360}{f}
+\end{equation}
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width = 12cm]{./figures/b2_qwp_analysis.png}
+    \caption{This plot shows our simulated results for the vertical polarisation intensity of the returning beam when we vary the angle of the first quarter waveplate. We identify three types of minima which occur when: when the angle of the first QWP is the same as the angle of the second QWP (in green), when fast axis of the first QWP is at $+45$° to the incoming light (in red), when the first QWP is at $-45$° to the incoming light (in blue).}
+    \label{fig:b2_qwp}
+\end{figure}
+
+
+\section{CMOS Camera Calibration}
+\hspace{10pt} To effectively analyse images of the MOT, we need to be able to relate the pixel values to the intensity of light incident on the CMOS. This can be done using a source of light of a known intensity; in our case, this was the beam from branch 2 of our optical setup. With the iris, we reduced the beam size so that it fits onto the CMOS, and by adding a 0.4D optical density filter and a linear polariser after the beam-splitter, we adjusted the power of the beam,$P_{beam}$, down to 1$\mu W$at the lower end of the range, and 20$\mu W$ at the higher end.
+
+The the total energy incident on the CMOS during one frame is simply $E=P_{beam}t_{exp}$, where $t_{exp}$ is the exposure time of the frame. We relate this to the response of the CMOS which we measure as the number of counts across the image of the MOT. If we consider the image to be a matrix $M_{ij}=\text{value of pixel at location i, j}$, the total number of counts is:
+
+\begin{equation}
+N_{counts}=\sum_{i,j\in MOT}M_{i,j} \label{eqn: camera total counts}
+\end{equation}
+
+We thus define our conversion factor, $\zeta$, from counts to incident energy as follows:
+
+\begin{equation}
+\zeta = \frac{P_{beam}t_{exp}}{N_{counts}} \label{eqn: camera conversion factor}
+\end{equation}
+
+In practice, this factor is dependent on the wavelength of light, $\zeta(\lambda)$, as the quantum efficiency of the CMOS varies for different wavelengths. We are calibrating our CMOS for the narrow range of the cooling and repump light ($\approx780\text{nm}$) so we can make the approximation: $\zeta(\lambda_{repump})\approx\zeta(\lambda_{cooling})=\zeta$. Furthermore, we expect the response of the CMOS to scale linearly with power (or intensity), as long as the image is not saturated.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width = 12cm]{./figures/Cam_Calibration_Graph.png}
+    \caption{We sum the greyscale counts from the CMOS image and relate it to the incident energy which is simply a function of the laser power and exposure time of the capture}
+    \label{fig:CamCalib}
+\end{figure}
+As seen in Figure \ref{fig:CamCalib}, our calibration returns a conversion factor of $\zeta=(6.1\pm0.1)\times10^{-17} \text{ J}/\text{count}$. We do not convert this to photon count yet as the light from the calibration source contains both cooling and repump light. The quantum efficiency of the CMOS for the two wavelengths of light is similar enough that the two are interchangeable; however, for generality we will quote our calibration factor in terms of energy. 
+
+\section{Measuring the MOT Size and Shape}
+
+\section{The }
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Results and Errors}
+\section{MOT Loading Curve}
+Having calibrated our camera, we can record many frames of the MOT, and analyse how the number of atoms, or the size and shape of the MOT changes. 
+An important limitation of our method is that the camera can only capture the MOT from one perspective, and our analysis assumes that the shape of the MOT is spherical, however we know that this is not necessarily the case. 
+
+Starting with the gradient coils off, we captured the MOT as we turned the field on. By analysing the images we could record the number of atoms loading into the MOT over time. By fitting the theoretical loading curve, $N(t)=N_S \left(1-e^{-(t+\Delta t)/\tau}\right)$, we can identify the lifetime, $\tau$, and the steady state number of atoms, $N_S$. The value of the lifetime is dependent on the parameters of the background gas, thus it should remain constant throughout our experiment. 
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width = 12cm]{./figures/texp_40000_pow_0.45.png}
+    \caption{}
+    \label{fig:CamCalib}
+\end{figure}
+
+W
+
+\section{Temperature of the MOT by Equipartition}
+
+\section{Nodes in the MOT}
+
+
+\hspace{10pt}The 
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Discussion}
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Conclusion}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{ieeetran}
+\bibliography{main_ref.bib}
+
+
+\end{document}
+
+
+
+
+\begin{equation}
+    g_f = g_j + (g_i - g_j) \frac{f(f+1) + i(i+1) - j(j+1)}{2f(f+1)} \\
+    g_f = g_j \frac{f(f+1) + j(j+1) - i(i+1)}{2f(f+1)} +
+    g_i \frac{f(f+1) + i(i+1) - j(j+1)}{2f(f+1)} +
+    \\
+    g_f \approx g_j \frac{f(f+1) + j(j+1) - i(i+1)}{2f(f+1)}
+    \label{eqn: zeeman energy}
+\end{equation}
